@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row ">
         <div class="col-md-6 col-lg-4 col-xl-4 col-sm mt-4" *ngFor='let team of teamDetails'>
-            <div data-toggle="modal" data-target="#exampleModal" (click)='popUpSelectedTeam = team.Team_Name'>
+            <div data-toggle="modal" data-target="#exampleModal" (click)='popUpSelectedTeam = team.Team_Id; teamname=team.Team_Name'>
                 <div class="flip-card">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
@@ -37,11 +37,11 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{popUpSelectedTeam}}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{teamname}}</h5>
             </div>
             <div class="modal-body">
 
-                {{popUpSelectedTeam | getteaminfo : todaysTeam}}
+                {{popUpSelectedTeam | getteaminfo : todaysTeam | json}}
 
             </div>
             <div class="modal-footer">

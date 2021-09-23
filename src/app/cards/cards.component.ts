@@ -11,6 +11,7 @@ export class CardsComponent implements OnInit {
   teamDetails : any
   todaysTeam : any
   popUpSelectedTeam : any;
+  teamname:any;
   constructor(private _TeamdetailsService : TeamdetailsService) { }
 
   ngOnInit(): void {
@@ -28,7 +29,7 @@ export class CardsComponent implements OnInit {
       for (var team of res){
         let y={ 
    "TIME_STAMP":team.c[0].f,
-		"Team_NAME":team.c[1].v,
+		"Team_NAME":team.c[1].v.split(' ')[0],
     "Team_MOM":team.c[2].v,
     "Team_BTS": team.c[3].v,
     "Team_BOW": team.c[4].v}
