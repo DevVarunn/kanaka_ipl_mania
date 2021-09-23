@@ -65,7 +65,7 @@ export class TeamdetailsService {
     {
       "Team_Id": 7,
       "Team_Name": "Kanaka Strikers",
-      "Team_Points": 0,
+      "Team_Points": 1,
       "Team_Logo": "kanakaStrikers.png",
       "Team_Members": ["Nikita Pingle", "Diptee Hamdapurkar", "Chetan Mahore"]
     },
@@ -90,7 +90,6 @@ export class TeamdetailsService {
     let promise = new Promise((resolve, reject) => {
       this.http.get(this.apiUrl,  {responseType: 'text'}).pipe(map((res:any)=>res.toString())).subscribe((data: any) => {
          const json = JSON.parse(data.substr(47).slice(0, -2));
-         console.log(json.table.rows)
           resolve(json.table.rows)
       });
     });

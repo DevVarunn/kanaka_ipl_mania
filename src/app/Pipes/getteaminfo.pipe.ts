@@ -13,8 +13,6 @@ export class GetteaminfoPipe implements PipeTransform {
     else{ 
       return  team.filter((s: any) => s.Team_NAME==value.toString());
     }
-   
-     
   }
 
 }

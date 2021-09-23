@@ -8,38 +8,62 @@ import { TeamdetailsService } from '../Services/teamdetails.service';
 })
 export class CardsComponent implements OnInit {
 
-  teamDetails : any
-  todaysTeam : any
-  popUpSelectedTeam : any;
-  teamname:any;
-  constructor(private _TeamdetailsService : TeamdetailsService) { }
+  teamDetails: any
+  todaysTeam = []
+  popUpSelectedTeam: any;
+  teamname: any;
+  selectedTeam: any = {}
+  headingName
+  objSize
+  constructor(private _TeamdetailsService: TeamdetailsService) { }
 
   ngOnInit(): void {
     this.teamDetails = this._TeamdetailsService.getTeamDeda().sort((a, b) => {
-      return  b.Team_Points - a.Team_Points;
-  });
-   this.getData();
-  
+      return b.Team_Points - a.Team_Points;
+    });
+    this.getData();
+
+  }
+
+  update(team: any) {
+    this.headingName = team
+    console.log('selected ==>',team);
+    this.selectedTeam = {}
+    this.todaysTeam.forEach((item) => {
+      console.log('conditional',item.Team_NAME.includes(team));
+      
+      if (item.Team_NAME.includes(team)) {
+        this.selectedTeam = item
+      }
+    })
+
+    this.objSize = Object.keys(this.selectedTeam).length
   }
 
 
-  getData(){
-    this._TeamdetailsService.getSheetData().then((res:any)=>{
-      let x=[];
-      for (var team of res){
-        let y={ 
-   "TIME_STAMP":team.c[0].f,
-		"Team_NAME":team.c[1].v.split(' ')[0],
-    "Team_MOM":team.c[2].v,
-    "Team_BTS": team.c[3].v,
-    "Team_BOW": team.c[4].v}
+  getData() {
+    this._TeamdetailsService.getSheetData().then((res: any) => {
+      // console.log(res);
+      
+      let x = [];
+      let y
+      for (var team of res) {
 
-    x.push(y);
-  
+        y = {
+          "TIME_STAMP": team.c[0].f,
+          "Team_NAME": team.c[1].v,
+          "Team_MOM": team.c[2].v,
+          "Team_BTS": team.c[3].v,
+          "Team_BOW": team.c[4].v
         }
-      console.log("Team Json ==>",x);
-      this.todaysTeam=x;
+
+        x.push(y)
+
+      }
+      console.log("Team Json todaysTeam ==>", x);
+      this.todaysTeam = x;
     })
+
   }
 
 }

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row ">
         <div class="col-md-6 col-lg-4 col-xl-4 col-sm mt-4" *ngFor='let team of teamDetails'>
-            <div data-toggle="modal" data-target="#exampleModal" (click)='popUpSelectedTeam = team.Team_Id; teamname=team.Team_Name'>
+            <div data-toggle="modal" data-target="#exampleModal" (click)='update(team.Team_Name)'>
                 <div class="flip-card">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
@@ -28,25 +28,30 @@
 
 
 <!-- Button trigger modal -->
-<button>
-    Launch demo modal
-  </button>
+
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div *ngIf='selectedTeam != null && selectedTeam != undefined' class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{teamname}}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{headingName}}</h5>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" >
 
-                {{popUpSelectedTeam | getteaminfo : todaysTeam | json}}
+                <div *ngIf='objSize == 0'>
+                    <h4> this team not responded yet </h4>
+                </div>
+                <!-- *ngIf='todaysTeam.length != 0 ' -->
+                <ul class="list-group " *ngIf='objSize != 0'>
+                    <li class="list-group-item ">MOM ==> {{selectedTeam.Team_MOM}}</li>
+                    <li class="list-group-item ">BTS ==> {{selectedTeam.Team_BTS}}</li>
+                    <li class="list-group-item ">BOW ==> {{selectedTeam.Team_BOW}}</li>
+                </ul>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
