@@ -26,6 +26,7 @@ export class CardsComponent implements OnInit {
   }
 
   update(team: any) {
+    this.getData()
     this.headingName = team
     console.log('selected ==>',team);
     this.selectedTeam = {}
