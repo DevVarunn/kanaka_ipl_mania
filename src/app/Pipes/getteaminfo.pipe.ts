@@ -7,8 +7,9 @@ export class GetteaminfoPipe implements PipeTransform {
 
 
   transform( value: any, team: any ): any {
-
-    return  team.filter((s: any) => s.Team_Name.includes(value));
+console.log(value);
+console.log(team);
+    return  team.filter((s: any) => s.Team_NAME==value);
      
   }
 

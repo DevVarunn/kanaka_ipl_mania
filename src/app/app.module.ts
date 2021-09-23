@@ -7,7 +7,7 @@ import { CardsComponent } from './cards/cards.component';
   
 
 import {​​​​​​ HttpClientModule}​​​​​​ from'@angular/common/http';
-import { GetteaminfoPipe } from './getteaminfo.pipe';
+import { GetteaminfoPipe } from './Pipes/getteaminfo.pipe';
 
 
 

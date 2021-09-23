@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TeamdetailsService } from '../teamdetails.service';
+import { TeamdetailsService } from '../Services/teamdetails.service';
 
 @Component({
   selector: 'app-cards',
