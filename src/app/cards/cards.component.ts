@@ -15,8 +15,28 @@ export class CardsComponent implements OnInit {
     this.teamDetails = this._TeamdetailsService.getTeamDeda().sort((a, b) => {
       return  b.Team_Points - a.Team_Points;
   });
-  console.log(this._TeamdetailsService.getSheetData());
+   this.getData();
   
+  }
+
+
+  getData(){
+    this._TeamdetailsService.getSheetData().then((res:any)=>{
+      let x=[];
+      for (var team of res){
+        let y={ 
+   "TIME_STAMP":team.c[0].f,
+		"Team_NAME":team.c[1].v,
+    "Team_MOM":team.c[2].v,
+    "Team_BTS": team.c[3].v,
+    "Team_BOW": team.c[4].v}
+
+    x.push(y);
+  
+        }
+      console.log("Team Json ==>",x);
+      this.teamDetails=x;
+    })
   }
 
 }

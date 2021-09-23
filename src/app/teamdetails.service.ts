@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import {map} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class TeamdetailsService {
   // apiUrl = 'https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json'
-  apiUrl = 'https://docs.google.com/spreadsheets/d/1DHxB7wGNX7EJ8_XrQR3HAHMjhxq2ziBax-7y1NzKrpE/gviz/tq?tqx=out:json'
+  apiUrl = 'https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/1DHxB7wGNX7EJ8_XrQR3HAHMjhxq2ziBax-7y1NzKrpE/gviz/tq?tqx=out:json'
 
   
 
@@ -88,12 +88,12 @@ export class TeamdetailsService {
   getSheetData(){
  
     let promise = new Promise((resolve, reject) => {
-      this.http.get(this.apiUrl, this.httpOptions).subscribe((data: any) => {
-        if (data?.Error) {
-          reject(data)
-        } else {
-          resolve(data)
-        }
+      this.http.get(this.apiUrl,  {responseType: 'text'}).pipe(map((res:any)=>res.toString())).subscribe((data: any) => {
+         const json = JSON.parse(data.substr(47).slice(0, -2));
+         console.log(json.table.rows)
+          resolve(json.table.rows)
+          
+        
       });
     });
     return promise;
