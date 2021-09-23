@@ -1,37 +1,26 @@
-<p>cards works!</p>
-
-<div class="container mt-5">
-    <div class="flip-card d-flex flex-wrap">
-        <div class="flip-card-inner " >
-            <div class="flip-card-front">
-                <img src="../../assets/img/gameSwingers.png" alt="Avatar" style="width:300px;height:300px;">
-            </div>
-            <div class="flip-card-back d-flex">
-                <div>
-                    <h1>Pune Phoenix Risers</h1>
-                    <h3> points : 0</h3>
-                </div>
-                <ul class="list-group ">
-                    <li class="list-group-item ">Tanmay kulkarni</li>
-                    <li class="list-group-item ">Sujit Kharat</li>
-                    <li class="list-group-item ">Apratim Gholap</li>
-                </ul>
-
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="container">
-    <div class="row">
-      <div class="col-sm">
-        One of three columns
-      </div>
-      <div class="col-sm">
-        One of three columns
-      </div>
-      <div class="col-sm">
-        One of three columns
-      </div>
+    <div class="row ">
+        <div class="col-md-6 col-lg-4 col-xl-4 col-sm mt-4" *ngFor= 'let team of teamDetails'>
+            <div class="flip-card">
+                <div class="flip-card-inner " >
+                    <div class="flip-card-front">
+                        <img src="../../assets/img/{{team.Team_Logo}}" alt="Avatar" style="width:300px;height:300px;">
+                    </div>
+                    <div class=" flip-card-back flex-column d-flex justify-content-around">
+                        <div>
+                            <h1>{{team.Team_Name}}</h1>
+                            <h3> points : {{team.Team_Points}}</h3>
+                        </div>
+                        <div class="container">
+                            <ul class="list-group " *ngFor='let members of team.Team_Members'>
+                                <li class="list-group-item ">{{members}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+      
     </div>
 </div>

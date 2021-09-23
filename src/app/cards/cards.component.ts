@@ -12,7 +12,11 @@ export class CardsComponent implements OnInit {
   constructor(private _TeamdetailsService : TeamdetailsService) { }
 
   ngOnInit(): void {
-    this.teamDetails = this._TeamdetailsService.getTeamDeda()
+    this.teamDetails = this._TeamdetailsService.getTeamDeda().sort((a, b) => {
+      return  b.Team_Points - a.Team_Points;
+  });
+  console.log(this._TeamdetailsService.getSheetData());
+  
   }
 
 }
