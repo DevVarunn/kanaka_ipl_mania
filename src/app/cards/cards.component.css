@@ -1,7 +1,10 @@
+*{
+
+}
 .flip-card {
   border-radius: 10px;
   background-color: transparent;
-  width: 300px;
+  width: 200px;
   height: 300px;
   perspective: 1000px;
   overflow: hidden;
@@ -51,4 +54,8 @@
   /* margin: 5px; */
   /* height: 100px; */
   background-color: blue;
+}
+
+.modal > *{
+  color: black !important;
 }
