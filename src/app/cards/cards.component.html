@@ -1,8 +1,9 @@
 <div class="container">
     <div class="row ">
         <div class="col-md-6 col-lg-4 col-xl-4 col-sm mt-4" *ngFor='let team of teamDetails'>
-            <div class="flip-card">
-                <div class="flip-card-inner ">
+            <div data-toggle="modal" data-target="#exampleModal" (click)='popUpSelectedTeam = team.Team_Name'>
+            <div class="flip-card" >
+                <div class="flip-card-inner" >
                     <div class="flip-card-front">
                         <img src="assets/img/{{team.Team_Logo}}" alt="Avatar" style="width:300px;height:300px;">
                     </div>
@@ -20,6 +21,33 @@
                 </div>
             </div>
         </div>
+        </div>
 
     </div>
 </div>
+
+
+<!-- Button trigger modal -->
+<button >
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{popUpSelectedTeam}}</h5>
+        </div>
+        <div class="modal-body">
+          
+            {{popUpSelectedTeam | GetteaminfoPipe : todaysTeam}}
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

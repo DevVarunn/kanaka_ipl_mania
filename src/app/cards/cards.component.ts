@@ -9,6 +9,8 @@ import { TeamdetailsService } from '../teamdetails.service';
 export class CardsComponent implements OnInit {
 
   teamDetails : any
+  todaysTeam : any
+  popUpSelectedTeam : any;
   constructor(private _TeamdetailsService : TeamdetailsService) { }
 
   ngOnInit(): void {
@@ -35,7 +37,7 @@ export class CardsComponent implements OnInit {
   
         }
       console.log("Team Json ==>",x);
-      this.teamDetails=x;
+      this.todaysTeam=x;
     })
   }
 

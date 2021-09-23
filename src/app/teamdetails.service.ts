@@ -6,7 +6,7 @@ import {map} from 'rxjs/operators';
 })
 export class TeamdetailsService {
   // apiUrl = 'https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json'
-  apiUrl = 'https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/1DHxB7wGNX7EJ8_XrQR3HAHMjhxq2ziBax-7y1NzKrpE/gviz/tq?tqx=out:json'
+  apiUrl = 'https://docs.google.com/spreadsheets/d/1DHxB7wGNX7EJ8_XrQR3HAHMjhxq2ziBax-7y1NzKrpE/gviz/tq?tqx=out:json'
 
   
 
@@ -92,11 +92,10 @@ export class TeamdetailsService {
          const json = JSON.parse(data.substr(47).slice(0, -2));
          console.log(json.table.rows)
           resolve(json.table.rows)
-          
-        
       });
     });
     return promise;
+    
   }
 
   // fetch(`https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json`)

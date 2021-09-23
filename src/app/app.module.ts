@@ -7,13 +7,15 @@ import { CardsComponent } from './cards/cards.component';
   
 
 import {​​​​​​ HttpClientModule}​​​​​​ from'@angular/common/http';
+import { GetteaminfoPipe } from './getteaminfo.pipe';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CardsComponent
+    CardsComponent,
+    GetteaminfoPipe
   ],
   imports: [
     BrowserModule,
