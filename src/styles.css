@@ -3,3 +3,25 @@ body {
     background-color: #041982!important;
     color:white;
 }
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #041982;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+      border-radius:10px;
+    background: #1b36bb; 
+}
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1b36bb; 
+  }

@@ -1,18 +1,26 @@
 <img src="assets/img/heading.png" class="img-fluid" alt="Responsive image">
 
 
+
+<div class="text-center">
+    <div>
+        {{name.value}}
+        <input #name type="text" name="" id="" style="max-width: 500px;">
+        <button (click)='log(name.value)'>submit</button>
+    </div>
+</div>
 <div class="text-center">
     <div class="d-flex justify-content-around" style="color: white;">
 
-        <pre style="text-align: left">
+        <pre class="result">
             The results for MI V KKR
             Man of the match - Sunil Narine
             Best Bowler – Jaspreet Bumrah – 3 for 43
             Best Batsman – Rahul Tripathi – 74 of 42 balls
         </pre>
-        <div>
+        <div style="font-family: arial,sans-serif;">
             <h3>RCB v CSK</h3>
-            <h3>today's match</h3>
+            <h3>Today's match</h3>
         </div>
 
     </div>
