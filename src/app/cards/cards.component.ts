@@ -26,6 +26,7 @@ export class CardsComponent implements OnInit {
 
 
   getData(){
+    this.todaysTeam=[];
     this._TeamdetailsService.getSheetData().then((res:any)=>{
       let x=[];
       for (var team of res){
