@@ -1,11 +1,10 @@
-
 <marquee behavior="speed" direction="">
     <strong>click or hover card for more information</strong>
 </marquee>
 <div class="container">
     <div class="row ">
         <div class="col-md-6 col-lg-3 col-xl-3 col-sm mt-4" *ngFor='let team of teamDetails'>
-            <div data-toggle="modal" data-target="#exampleModal" (click)='update(team.Team_Name)'>
+            <div data-toggle="modal" data-target="#exampleModal" (click)='getData();popUpSelectedTeam=team.Team_Id;teamname=team.Team_Name'>
                 <div class="flip-card">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
@@ -36,23 +35,23 @@
 
 
 <!-- Modal -->
-<div *ngIf='selectedTeam != null && selectedTeam != undefined' class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{headingName}}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{teamname}}</h5>
             </div>
-            <div class="modal-body" >
-
-                <div *ngIf='objSize == 0'>
-                    <h4> this team not responded yet </h4>
+            <div class="modal-body">
+                <div *ngIf="(todaysTeam | getteaminfo :popUpSelectedTeam) as result">
+                    <ul class="list-group text-center" *ngFor="let team of todaysTeam | getteaminfo :popUpSelectedTeam">
+                        <li class="list-group-item ">Man of the match:<span class="teamdetails">{{team.Team_MOM}}</span> </li>
+                        <li class="list-group-item ">Best Batsman :<span class="teamdetails">{{team.Team_BTS}}</span> </li>
+                        <li class="list-group-item ">Best Bowler :<span class="teamdetails">{{team.Team_BOW}}</span></li>
+                    </ul>
+                    <span *ngIf="result.length === 0">Team has not submitted prediction</span>
                 </div>
-                <!-- *ngIf='todaysTeam.length != 0 ' -->
-                <ul class="list-group " *ngIf='objSize != 0'>
-                    <li class="list-group-item ">MOM ==> {{selectedTeam.Team_MOM}}</li>
-                    <li class="list-group-item ">BTS ==> {{selectedTeam.Team_BTS}}</li>
-                    <li class="list-group-item ">BOW ==> {{selectedTeam.Team_BOW}}</li>
-                </ul>
+
+
 
             </div>
             <div class="modal-footer">
