@@ -24,3 +24,13 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.footer{
+    font-family:  Brush Script Std, cursive;
+    font-size:30px;
+    text-align: center;
+}
+
+.footer > span{
+    color: red;
+}

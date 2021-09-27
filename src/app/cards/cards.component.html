@@ -1,8 +1,13 @@
 <div class="container">
     <div class="row ">
-        <div class="col-md-6 col-lg-3 col-xl-3 col-sm mt-4" *ngFor='let team of googleFormTeamDetails'>
-            <div data-toggle="modal" data-target="#exampleModal1" (click)='getData();popUpSelectedTeam=team.Team_Id;teamname=team.Team_Name;passcode=team.Pass_Code'>
-                <div class="flip-card">
+        <div class="col-md-10 col-lg-3 col-xl-3 col-sm mt-4" *ngFor='let team of googleFormTeamDetails'>
+            <div  data-toggle="modal" data-target="#exampleModal1" (click)='getData();popUpSelectedTeam=team.Team_Id;teamname=team.Team_Name;passcode=team.Pass_Code'>
+                <marquee  behavior="alternate">
+                    <i *ngIf='team.Team_Points == maxPoint' class="fas fa-crown"></i>  <span [ngClass]='team.Team_Points == maxPoint ? "max text-center" : "low" '></span>  <i *ngIf='team.Team_Points == maxPoint' class="fas fa-crown"></i>
+                </marquee>
+                
+                
+                <div class="flip-card" >
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
                             <img src="assets/img/{{team.Team_Logo}}" alt="Avatar" style="width: -webkit-fill-available;height:300px;">

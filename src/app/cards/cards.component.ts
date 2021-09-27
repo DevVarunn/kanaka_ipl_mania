@@ -11,8 +11,9 @@ export class CardsComponent implements OnInit {
   todaysTeam: any
   popUpSelectedTeam: any;
   teamname: any;
-  googleFormTeamDetails:any;
-  passcode:any;
+  googleFormTeamDetails: any;
+  passcode: any;
+  maxPoint
 
 
   constructor(private _TeamdetailsService: TeamdetailsService) { }
@@ -23,7 +24,7 @@ export class CardsComponent implements OnInit {
   }
 
   getTeamdetails() {
- 
+
 
     this._TeamdetailsService.getTeamdetails().then((res: any) => {
       let x = []
@@ -42,13 +43,22 @@ export class CardsComponent implements OnInit {
       this.googleFormTeamDetails = x.sort((a, b) => {
         return b.Team_Points - a.Team_Points;
       });
-
+      this.getMax()
     })
     this._TeamdetailsService.setTeamDetails(this.googleFormTeamDetails)
 
+
+
   }
 
- 
+  getMax() {
+    this.maxPoint = Math.max.apply(Math, this.googleFormTeamDetails.map(function (o) {
+      return o.Team_Points;
+    }));
+    console.log('max', this.maxPoint);
+  }
+
+
 
   getData() {
     this.todaysTeam = [];

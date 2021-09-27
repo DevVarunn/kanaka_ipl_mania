@@ -2,18 +2,20 @@
 
 
 <div class="row text-center justify-content-center">
-    <div class="col-md-5"><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Yesterdays Match</button></div>
-    <div class="col-md-5"><a href='https://forms.gle/SRGwobDuwHoTcPtN9' class="btn btn-primary" target='_blank'>Submit Team</a></div>
+    <div class="col-md-5"><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Yesterdays
+            Match</button></div>
+    <div class="col-md-5"><a href='https://forms.gle/SRGwobDuwHoTcPtN9' class="btn btn-primary" target='_blank'>Submit
+            Team</a></div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">{{YMATCH}}</h5>
             </div>
             <div class="modal-body">
-
                 <ul class="list-group text-center">
                     <li class="list-group-item ">Man of the match:<span class="teamdetails">{{YMOM}}</span> </li>
                     <li class="list-group-item ">Best Batsman :<span class="teamdetails">{{YBTS}}</span> </li>
@@ -21,7 +23,6 @@
                 </ul>
             </div>
             <div class="modal-footer">
-
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
         </div>
@@ -29,4 +30,7 @@
 </div>
 
 <app-cards></app-cards>
+<div class='footer'>
+    Made with <span>❤</span>
+</div>
 <router-outlet></router-outlet>

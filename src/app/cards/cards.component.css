@@ -1,5 +1,13 @@
-* {}
+.max::before{
+    content:' Table Topper ';
+    color:#f3ce0b;
+    font-weight: bolder;
+}
+.low::before{
+    color : blue;
+    content:'  -';
 
+}
 .flip-card {
     border-radius: 10px;
     background-color: transparent;
