@@ -19,7 +19,6 @@ export class GetteaminfoPipe implements PipeTransform {
 
       this.filterdTeam = value.filter((s: any) => {
         let TeamSubmissionDate = new Date(s.TIME_STAMP).setHours(0, 0, 0, 0);
-        console.log(s.Team_ID,team,s.Pass_Code,passcode);
         if (s.Team_ID == team.toString() && this.TodaysDate == TeamSubmissionDate && s.Pass_Code==passcode) {
           return true;
         } else {
@@ -30,10 +29,8 @@ export class GetteaminfoPipe implements PipeTransform {
       if (this.filterdTeam.length > 1) {
         let tempArray = []
         tempArray.push(this.filterdTeam[this.filterdTeam.length - 1])
-        console.log('tempArray', tempArray);
         return tempArray
       } else {
-        console.log('log', this.filterdTeam);
 
         return this.filterdTeam
       }

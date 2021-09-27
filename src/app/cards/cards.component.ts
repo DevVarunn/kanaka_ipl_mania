@@ -43,7 +43,6 @@ export class CardsComponent implements OnInit {
         return b.Team_Points - a.Team_Points;
       });
 
-      console.log('googleFormTeamDetails', this.googleFormTeamDetails);
     })
     this._TeamdetailsService.setTeamDetails(this.googleFormTeamDetails)
 
@@ -54,9 +53,6 @@ export class CardsComponent implements OnInit {
   getData() {
     this.todaysTeam = [];
     this._TeamdetailsService.getSheetData().then((res: any) => {
-
-      console.log('checkpass', res);
-      
 
       let x = [];
       for (var team of res) {
