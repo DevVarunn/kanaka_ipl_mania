@@ -26,9 +26,29 @@ export class CardsComponent implements OnInit {
   }
 
   getTeamdetails(){
+    // "Team_Id": 1,
+    // "Team_Name": "Puneri Bana",
+    // "Team_Points": 2,
+    // "Team_Logo": "PuneriBana.png",
+    // "Team_Members": ["Varun Kulkarni", "Chaitali Suryawanshi", "Yogesh Babar"],
+    // "Pass_Code": 1010
 
     this._TeamdetailsService.getTeamdetails().then((res: any) => {
-      console.log('teamDetails', res);
+      let x = [];
+      for (var team of res) {
+        let y = {
+          "Team_Id": team.c[1].f,
+          "Team_Name": team.c[2].v,
+          "Team_Points": team.c[3].v,
+          "Team_Logo": team.c[4].v,
+          "Team_Members": team.c[5].v.split(','),
+          "Pass_Code": team.c[6].v
+        }
+        x.push(y)
+      }
+
+      console.log('teamDetailsJson', x);
+      
 
     })
   }
