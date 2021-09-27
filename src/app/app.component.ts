@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'kanakaiplmania';
+  YMATCH="CSK VS GOOGLE";
+  YMOM="DHONI GOOGLE";
+  YBTS="GOOGLE DHONI";
+  YBOW="FACEBOOK KHAN";
 }

@@ -1,28 +1,32 @@
 <img src="assets/img/heading.png" class="img-fluid" alt="Responsive image">
 
 
-
-<div class="text-center">
-   
+<div class="row text-center justify-content-center">
+    <div class="col-md-5"><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Yesterdays Match</button></div>
+    <div class="col-md-5"><a href='https://forms.gle/SRGwobDuwHoTcPtN9' class="btn btn-primary" target='_blank'>Submit Team</a></div>
 </div>
-<div class="text-center">
-    <div class="d-flex justify-content-around" style="color: white;">
 
-        <pre class="result">
-            The results for MI V KKR
-            Man of the match - Sunil Narine
-            Best Bowler – Jaspreet Bumrah – 3 for 43
-            Best Batsman – Rahul Tripathi – 74 of 42 balls
-        </pre>
-        <div style="font-family: arial,sans-serif;">
-            <h3>RCB v CSK</h3>
-            <h3>Today's match</h3>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{YMATCH}}</h5>
+            </div>
+            <div class="modal-body">
+
+                <ul class="list-group text-center">
+                    <li class="list-group-item ">Man of the match:<span class="teamdetails">{{YMOM}}</span> </li>
+                    <li class="list-group-item ">Best Batsman :<span class="teamdetails">{{YBTS}}</span> </li>
+                    <li class="list-group-item ">Best Bowler :<span class="teamdetails">{{YBOW}}</span></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
         </div>
-
     </div>
-    <a href='https://forms.gle/SRGwobDuwHoTcPtN9' class="btn btn-primary" target='_blank'>Submit your team</a>
 </div>
-
 
 <app-cards></app-cards>
 <router-outlet></router-outlet>

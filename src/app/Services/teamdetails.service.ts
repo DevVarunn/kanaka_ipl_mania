@@ -15,22 +15,6 @@ export class TeamdetailsService {
   setTeamDetails(team){
     this.googleFormTeamDetails = team
   }
-  getTeamdetailsFromService(){
-    return  this.googleFormTeamDetails
-  }
-
-  setSelectedTeamPassCode(passcode){
-    
-    this.selectedTeamPasscode= passcode 
-    console.log('getpass',this.selectedTeamPasscode);
-
-  }
-
-  getSelectedTeamPassCode(){
-    return this.selectedTeamPasscode 
-  }
-
-
 
 
   httpOptions = {

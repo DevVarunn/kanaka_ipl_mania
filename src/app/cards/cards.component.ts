@@ -11,9 +11,8 @@ export class CardsComponent implements OnInit {
   todaysTeam: any
   popUpSelectedTeam: any;
   teamname: any;
-
-  googleFormTeamDetails 
-
+  googleFormTeamDetails:any;
+  passcode:any;
 
 
   constructor(private _TeamdetailsService: TeamdetailsService) { }
@@ -52,10 +51,7 @@ export class CardsComponent implements OnInit {
 
  
 
-  getData(teamPassCode?) {
-    
-    this._TeamdetailsService.setSelectedTeamPassCode(teamPassCode)
-    
+  getData() {
     this.todaysTeam = [];
     this._TeamdetailsService.getSheetData().then((res: any) => {
 
