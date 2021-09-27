@@ -8,34 +8,28 @@ import { TeamdetailsService } from '../Services/teamdetails.service';
 })
 export class CardsComponent implements OnInit {
 
-  teamDetails: any
   todaysTeam: any
   popUpSelectedTeam: any;
   teamname: any;
+
+  googleFormTeamDetails 
+
 
 
   constructor(private _TeamdetailsService: TeamdetailsService) { }
 
   ngOnInit(): void {
-    this.teamDetails = this._TeamdetailsService.getTeamDeda().sort((a, b) => {
-      return b.Team_Points - a.Team_Points;
-    });
     this.getData();
     this.getTeamdetails()
-
   }
 
-  getTeamdetails(){
-    // "Team_Id": 1,
-    // "Team_Name": "Puneri Bana",
-    // "Team_Points": 2,
-    // "Team_Logo": "PuneriBana.png",
-    // "Team_Members": ["Varun Kulkarni", "Chaitali Suryawanshi", "Yogesh Babar"],
-    // "Pass_Code": 1010
+  getTeamdetails() {
+ 
 
     this._TeamdetailsService.getTeamdetails().then((res: any) => {
-      let x = [];
+      let x = []
       for (var team of res) {
+
         let y = {
           "Team_Id": team.c[1].f,
           "Team_Name": team.c[2].v,
@@ -46,17 +40,27 @@ export class CardsComponent implements OnInit {
         }
         x.push(y)
       }
+      this.googleFormTeamDetails = x.sort((a, b) => {
+        return b.Team_Points - a.Team_Points;
+      });
 
-      console.log('teamDetailsJson', x);
-      
-
+      console.log('googleFormTeamDetails', this.googleFormTeamDetails);
     })
+    this._TeamdetailsService.setTeamDetails(this.googleFormTeamDetails)
+
   }
 
-  getData() {
+ 
+
+  getData(teamPassCode?) {
+    
+    this._TeamdetailsService.setSelectedTeamPassCode(teamPassCode)
+    
     this.todaysTeam = [];
     this._TeamdetailsService.getSheetData().then((res: any) => {
-      console.log('res', res);
+
+      console.log('checkpass', res);
+      
 
       let x = [];
       for (var team of res) {
@@ -70,7 +74,6 @@ export class CardsComponent implements OnInit {
         }
         x.push(y)
       }
-      console.log("Team Json todaysTeam ==>", x);
       this.todaysTeam = x;
     })
 
