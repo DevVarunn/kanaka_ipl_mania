@@ -1,9 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { TeamdetailsService } from '../Services/teamdetails.service';
 
 @Pipe({
   name: 'getteaminfo'
 })
 export class GetteaminfoPipe implements PipeTransform {
+
+  
+  constructor(private _TeamdetailsService: TeamdetailsService) { }
+  teamdetails = this._TeamdetailsService.Teamdetails
 
   filterdTeam
 
@@ -27,12 +32,12 @@ export class GetteaminfoPipe implements PipeTransform {
       if(this.filterdTeam.length > 1) {
         let tempArray = []
         tempArray.push(this.filterdTeam[this.filterdTeam.length - 1])
-        console.log(tempArray);
+        console.log('tempArray',tempArray);
         return tempArray
         
         return this.filterdTeam[this.filterdTeam.length - 1]
       }else{
-        console.log(this.filterdTeam);
+        console.log('log',this.filterdTeam);
         
         return this.filterdTeam
       }

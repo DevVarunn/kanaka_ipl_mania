@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class TeamdetailsService {
   // apiUrl = 'https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json'
   apiUrl = 'https://docs.google.com/spreadsheets/d/1DHxB7wGNX7EJ8_XrQR3HAHMjhxq2ziBax-7y1NzKrpE/gviz/tq?tqx=out:json'
+  // URL_teamDetails = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRl1fFRKe97d5FwJhDP--m-XcB7kHs2zGfXdV4MwB8YhrUwFCMWk9xPG0pGn0DCpIPnaOrij4Jdy69n/pubhtml'
 
-  
+  URL_teamDetails = 'https://docs.google.com/spreadsheets/d/17QODL8aJoJeHrcVJt3BqecEVxa2oA9hKc1y0CTYhVwY/gviz/tq?tqx=out:json'
+
+
 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin':'*'
+      'Access-Control-Allow-Origin': '*'
     }),
   };
 
@@ -25,7 +28,8 @@ export class TeamdetailsService {
       "Team_Name": "Puneri Bana",
       "Team_Points": 2,
       "Team_Logo": "PuneriBana.png",
-      "Team_Members": ["Varun Kulkarni", "Chaitali Suryawanshi", "Yogesh Babar"]
+      "Team_Members": ["Varun Kulkarni", "Chaitali Suryawanshi", "Yogesh Babar"],
+      "Pass_Code": 1010
     },
     {
       "Team_Id": 2,
@@ -85,16 +89,27 @@ export class TeamdetailsService {
     }
   ]
 
-  getSheetData(){
- 
+  getTeamdetails(){
+
     let promise = new Promise((resolve, reject) => {
-      this.http.get(this.apiUrl,  {responseType: 'text'}).pipe(map((res:any)=>res.toString())).subscribe((data: any) => {
-         const json = JSON.parse(data.substr(47).slice(0, -2));
-          resolve(json.table.rows)
+      this.http.get(this.URL_teamDetails, { responseType: 'text' }).pipe(map((res: any) => res.toString())).subscribe((data: any) => {
+        const json = JSON.parse(data.substr(47).slice(0, -2));
+        resolve(json.table.rows)
       });
     });
     return promise;
-    
+  }
+
+  getSheetData() {
+
+    let promise = new Promise((resolve, reject) => {
+      this.http.get(this.apiUrl, { responseType: 'text' }).pipe(map((res: any) => res.toString())).subscribe((data: any) => {
+        const json = JSON.parse(data.substr(47).slice(0, -2));
+        resolve(json.table.rows)
+      });
+    });
+    return promise;
+
   }
 
   // fetch(`https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json`)
@@ -103,7 +118,7 @@ export class TeamdetailsService {
   //       const json = JSON.parse(text.substr(47).slice(0, -2))
   //   })
 
-  getTeamDeda(){
+  getTeamDeda() {
     return this.Teamdetails
   }
 
