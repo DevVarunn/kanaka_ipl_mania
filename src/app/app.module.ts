@@ -8,6 +8,7 @@ import { CardsComponent } from './cards/cards.component';
 
 import {​​​​​​ HttpClientModule}​​​​​​ from'@angular/common/http';
 import { GetteaminfoPipe } from './Pipes/getteaminfo.pipe';
+import { TeamMatchPipe } from './Pipes/team-match.pipe';
 
 
 
@@ -15,7 +16,8 @@ import { GetteaminfoPipe } from './Pipes/getteaminfo.pipe';
   declarations: [
     AppComponent,
     CardsComponent,
-    GetteaminfoPipe
+    GetteaminfoPipe,
+    TeamMatchPipe
   ],
   imports: [
     BrowserModule,

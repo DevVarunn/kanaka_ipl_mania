@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row ">
         <div class="col-md-10 col-lg-3 col-xl-3 col-sm mt-4" *ngFor='let team of googleFormTeamDetails'>
-            <div  data-toggle="modal" data-target="#exampleModal1" (click)='getData();popUpSelectedTeam=team.Team_Id;teamname=team.Team_Name;passcode=team.Pass_Code'>
-                <marquee  behavior="alternate">
-                    <i *ngIf='team.Team_Points == maxPoint' class="fas fa-crown"></i>  <span [ngClass]='team.Team_Points == maxPoint ? "max text-center" : "low" '></span>  <i *ngIf='team.Team_Points == maxPoint' class="fas fa-crown"></i>
+            <div data-toggle="modal" data-target="#exampleModal1" (click)='getData();popUpSelectedTeam=team.Team_Id;teamname=team.Team_Name;passcode=team.Pass_Code'>
+                <marquee behavior="alternate">
+                    <i *ngIf='team.Team_Points == maxPoint' class="fas fa-crown"></i> <span [ngClass]='team.Team_Points == maxPoint ? "max text-center" : "low" '></span> <i *ngIf='team.Team_Points == maxPoint' class="fas fa-crown"></i>
                 </marquee>
-                
-                
-                <div class="flip-card" >
+
+
+                <div class="flip-card">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
                             <img src="assets/img/{{team.Team_Logo}}" alt="Avatar" style="width: -webkit-fill-available;height:300px;">
@@ -46,7 +46,9 @@
             </div>
             <div class="modal-body">
                 <div *ngIf="(todaysTeam | getteaminfo :popUpSelectedTeam:passcode) as result">
-                    <ul class="list-group text-center " *ngFor="let team of todaysTeam | getteaminfo :popUpSelectedTeam:passcode">
+                    <ul class="list-group maza text-center " *ngFor="let team of todaysTeam | getteaminfo :popUpSelectedTeam:passcode">
+                        <li class="list-group-item ">Time Submitted:<span class="teamdetails">{{team.TIME_STAMP |date:'medium'}}</span> </li>
+                        <li class="list-group-item ">For Match:<span class="teamdetails">{{team.team_type | teamMatch}}</span> </li>
                         <li class="list-group-item ">Man of the match:<span class="teamdetails">{{team.Team_MOM}}</span> </li>
                         <li class="list-group-item ">Best Batsman :<span class="teamdetails">{{team.Team_BTS}}</span> </li>
                         <li class="list-group-item ">Best Bowler :<span class="teamdetails">{{team.Team_BOW}}</span></li>

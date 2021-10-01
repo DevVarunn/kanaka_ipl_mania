@@ -63,10 +63,11 @@ export class CardsComponent implements OnInit {
   getData() {
     this.todaysTeam = [];
     this._TeamdetailsService.getSheetData().then((res: any) => {
-
+console.log(res);
       let x = [];
       for (var team of res) {
         let y = {
+          "team_type": team.c[7].v.split('')[0],
           "TIME_STAMP": team.c[0].f,
           "Team_ID": team.c[1].v.split(' ')[0],
           "Team_MOM": team.c[2].v,
@@ -76,6 +77,7 @@ export class CardsComponent implements OnInit {
         }
         x.push(y)
       }
+      console.log(x);
       this.todaysTeam = x;
     })
 

@@ -4,12 +4,11 @@
 <div class="row text-center justify-content-center">
     <div class="col-md-5"><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Yesterdays
             Match</button></div>
-    <div class="col-md-5"><a href='https://forms.gle/SRGwobDuwHoTcPtN9' class="btn btn-primary" target='_blank'>Submit
-            Team</a></div>
+    <div class="col-md-5"><button [disabled]="currentDate.getTime()>=-14182940000" href='https://forms.gle/SRGwobDuwHoTcPtN9' class="btn btn-primary" target='_blank'>Submit
+            Team</button></div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -31,6 +30,6 @@
 
 <app-cards></app-cards>
 <div class='footer'>
-    Made with <span>❤</span>
+    Made with <span>❤</span> at Kanaka HQ
 </div>
 <router-outlet></router-outlet>

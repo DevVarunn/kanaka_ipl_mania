@@ -26,12 +26,22 @@ export class GetteaminfoPipe implements PipeTransform {
         }
       });
       console.log("Filtered Team==>",this.filterdTeam)
-      if (this.filterdTeam.length > 1) {
+      if (this.filterdTeam.length >=1) {
         let tempArray = []
-        tempArray.push(this.filterdTeam[this.filterdTeam.length - 1])
+        this.filterdTeam.forEach(element=>{
+          let index=tempArray.findIndex(i => i.team_type ==element.team_type);
+          console.log(index);
+          if(index!=-1){
+            tempArray[index]=element;
+          }else{
+            console.log("pushed");
+            tempArray.push(element);
+            
+          }
+        })
+        console.log("tempm Aeeay",tempArray)
         return tempArray
       } else {
-
         return this.filterdTeam
       }
     }

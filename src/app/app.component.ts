@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  currentDate=new Date();
+
   title = 'kanakaiplmania';
   YMATCH="CSK VS GOOGLE";
   YMOM="DHONI GOOGLE";
