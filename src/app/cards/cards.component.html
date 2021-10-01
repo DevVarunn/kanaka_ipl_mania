@@ -1,30 +1,33 @@
 <div class="container">
     <div class="row ">
         <div class="col-md-10 col-lg-3 col-xl-3 col-sm mt-4" *ngFor='let team of googleFormTeamDetails'>
-            <div data-toggle="modal" data-target="#exampleModal1" (click)='getData();popUpSelectedTeam=team.Team_Id;teamname=team.Team_Name;passcode=team.Pass_Code'>
+            <div data-toggle="modal" data-target="#exampleModal1"
+                (click)='getData();popUpSelectedTeam=team.Team_Id;teamname=team.Team_Name;passcode=team.Pass_Code'>
                 <marquee behavior="alternate">
-                    <i *ngIf='team.Team_Points == maxPoint' class="fas fa-crown"></i> <span [ngClass]='team.Team_Points == maxPoint ? "max text-center" : "low" '></span> <i *ngIf='team.Team_Points == maxPoint' class="fas fa-crown"></i>
+                    <i *ngIf='team.Team_Points == maxPoint' class="fas fa-crown"></i> <span
+                        [ngClass]='team.Team_Points == maxPoint ? "max text-center" : "low" '></span> <i
+                        *ngIf='team.Team_Points == maxPoint' class="fas fa-crown"></i>
                 </marquee>
 
 
                 <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="assets/img/{{team.Team_Logo}}" alt="Avatar" style="width: -webkit-fill-available;height:300px;">
-                        </div>
-                        <!--  -->
-                        <div class=" flip-card-back flex-column d-flex justify-content-around">
-                            <div>
-                                <h3>{{team.Team_Name}}</h3>
-                                <h3> points : {{team.Team_Points}}</h3>
+                    <div class="flip-card-inner text-center">
+                            <div class="flip-card-front">
+                                <img src="assets/img/{{team.Team_Logo}}" alt="Avatar" class='cardAvtar'>
                             </div>
-                            <div class="">
-                                <ul class="list-group " *ngFor='let members of team.Team_Members'>
-                                    <li class="list-group-item mx-1">{{members}}</li>
-                                </ul>
+                            <!--  -->
+                            <div class=" flip-card-back flex-column d-flex justify-content-around">
+                                <div>
+                                    <h3>{{team.Team_Name}}</h3>
+                                    <h3> points : {{team.Team_Points}}</h3>
+                                </div>
+                                <div class="">
+                                    <ul class="list-group " *ngFor='let members of team.Team_Members'>
+                                        <li class="list-group-item mx-1">{{members}}</li>
+                                    </ul>
+                                </div>
+                                <small>*Click me to view team</small>
                             </div>
-                            <small>*Click me to view team</small>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -38,7 +41,8 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -46,12 +50,18 @@
             </div>
             <div class="modal-body">
                 <div *ngIf="(todaysTeam | getteaminfo :popUpSelectedTeam:passcode) as result">
-                    <ul class="list-group maza text-center " *ngFor="let team of todaysTeam | getteaminfo :popUpSelectedTeam:passcode">
-                        <li class="list-group-item ">Time Submitted:<span class="teamdetails">{{team.TIME_STAMP |date:'medium'}}</span> </li>
-                        <li class="list-group-item ">For Match:<span class="teamdetails">{{team.team_type | teamMatch}}</span> </li>
-                        <li class="list-group-item ">Man of the match:<span class="teamdetails">{{team.Team_MOM}}</span> </li>
-                        <li class="list-group-item ">Best Batsman :<span class="teamdetails">{{team.Team_BTS}}</span> </li>
-                        <li class="list-group-item ">Best Bowler :<span class="teamdetails">{{team.Team_BOW}}</span></li>
+                    <ul class="list-group maza text-center "
+                        *ngFor="let team of todaysTeam | getteaminfo :popUpSelectedTeam:passcode">
+                        <li class="list-group-item ">Time Submitted:<span class="teamdetails">{{team.TIME_STAMP
+                                |date:'medium'}}</span> </li>
+                        <li class="list-group-item ">For Match:<span class="teamdetails">{{team.team_type |
+                                teamMatch}}</span> </li>
+                        <li class="list-group-item ">Man of the match:<span class="teamdetails">{{team.Team_MOM}}</span>
+                        </li>
+                        <li class="list-group-item ">Best Batsman :<span class="teamdetails">{{team.Team_BTS}}</span>
+                        </li>
+                        <li class="list-group-item ">Best Bowler :<span class="teamdetails">{{team.Team_BOW}}</span>
+                        </li>
                     </ul>
                     <span *ngIf="result.length === 0">Team has not submitted prediction</span>
                 </div>

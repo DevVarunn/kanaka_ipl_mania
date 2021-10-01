@@ -40,3 +40,18 @@ a {
     width: 150px;
     padding: 10px;
 }
+
+
+
+@media only screen and (max-width: 600px) {
+
+    .flip-card {
+        width: 330px;
+        margin: auto;
+    }
+
+    .btn{
+        margin-top: 3%;
+    }
+
+}

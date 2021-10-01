@@ -6,7 +6,7 @@
 
 .low::before {
     color: blue;
-    content: '  -';
+    content: '. . . . . . ';
 }
 
 .flip-card {
@@ -29,7 +29,7 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.flip-card:hover .flip-card-inner {
+.flip-card:hover > .flip-card-inner {
     cursor: pointer;
     transform: rotateY(180deg);
 }
@@ -87,4 +87,9 @@
 
 .maza {
     margin-bottom: 10px;
+}
+
+.cardAvtar{
+    width: -webkit-fill-available;
+    height:300px;
 }
