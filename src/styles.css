@@ -2,10 +2,12 @@
 
 body {
     background-color: #041982!important;
-    color: white;
+    
     overflow-x: hidden;
 }
-
+*{
+    color: white!important;
+}
 
 /* width */
 
@@ -41,7 +43,25 @@ a {
     padding: 10px;
 }
 
+li{
+    color: white ;background-color: rgb(245 245 245 / 7%)!important;
+}
 
+.modal-header, .modal-footer, .themeBackground{
+    border-top: none !important;
+    border-bottom: none !important;
+    background-color: #041982!important;
+}
+
+
+
+.list-group-item {
+    font-family: sans-serif;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 @media only screen and (max-width: 600px) {
 
@@ -52,6 +72,10 @@ a {
 
     .btn{
         margin-top: 3%;
+    }
+
+    .teamdetails {
+        font-size: 1vh;
     }
 
 }

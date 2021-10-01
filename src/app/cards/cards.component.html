@@ -12,22 +12,22 @@
 
                 <div class="flip-card">
                     <div class="flip-card-inner text-center">
-                            <div class="flip-card-front">
-                                <img src="assets/img/{{team.Team_Logo}}" alt="Avatar" class='cardAvtar'>
+                        <div class="flip-card-front">
+                            <img src="assets/img/{{team.Team_Logo}}" alt="Avatar" class='cardAvtar'>
+                        </div>
+                        <!--  -->
+                        <div class=" flip-card-back flex-column d-flex justify-content-around">
+                            <div>
+                                <h3>{{team.Team_Name}}</h3>
+                                <h3> points : {{team.Team_Points}}</h3>
                             </div>
-                            <!--  -->
-                            <div class=" flip-card-back flex-column d-flex justify-content-around">
-                                <div>
-                                    <h3>{{team.Team_Name}}</h3>
-                                    <h3> points : {{team.Team_Points}}</h3>
-                                </div>
-                                <div class="">
-                                    <ul class="list-group " *ngFor='let members of team.Team_Members'>
-                                        <li class="list-group-item mx-1">{{members}}</li>
-                                    </ul>
-                                </div>
-                                <small>*Click me to view team</small>
+                            <div class="">
+                                <ul  class="list-group " *ngFor='let members of team.Team_Members'>
+                                    <li class="list-group-item mx-1">{{members}}</li>
+                                </ul>
                             </div>
+                            <small>*Click me to view team</small>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -43,30 +43,37 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document" >
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header ">
                 <h5 class="modal-title" id="exampleModalLabel">{{teamname}}</h5>
             </div>
-            <div class="modal-body">
+            <div class="modal-body themeBackground">
                 <div *ngIf="(todaysTeam | getteaminfo :popUpSelectedTeam:passcode) as result">
-                    <ul class="list-group maza text-center "
-                        *ngFor="let team of todaysTeam | getteaminfo :popUpSelectedTeam:passcode">
+                    <ul class="list-group maza "
+                        *ngFor="let team of todaysTeam | getteaminfo :popUpSelectedTeam:passcode ;index as i">
+
+
+                        <li class="list-group-item ">For Match:<strong class="teamdetails">{{team.team_type |
+                            teamMatch}}</strong> </li>
                         <li class="list-group-item ">Time Submitted:<span class="teamdetails">{{team.TIME_STAMP
                                 |date:'medium'}}</span> </li>
-                        <li class="list-group-item ">For Match:<span class="teamdetails">{{team.team_type |
-                                teamMatch}}</span> </li>
-                        <li class="list-group-item ">Man of the match:<span class="teamdetails">{{team.Team_MOM}}</span>
+                        
+                        <li class="list-group-item "> <span>Man of the match <img style="width: 2vw;" src="../../assets/img/manofthematch.svg" alt="">:</span>
+                            <span class="teamdetails">{{team.Team_MOM}}</span>
                         </li>
-                        <li class="list-group-item ">Best Batsman :<span class="teamdetails">{{team.Team_BTS}}</span>
+                        <li class="list-group-item "><span>
+                            Best Batsman <img style="width: .9vw;"  src="../../assets/img/cricket-bat-01.svg" alt=""> :
+                        </span><span class="teamdetails">{{team.Team_BTS}}</span>
                         </li>
-                        <li class="list-group-item ">Best Bowler :<span class="teamdetails">{{team.Team_BOW}}</span>
+                        <li class="list-group-item "><span>Best Bowler <i class="fas fa-baseball-ball"> </i>:</span><span class="teamdetails">{{team.Team_BOW}}</span>
                         </li>
                     </ul>
-                    <span *ngIf="result.length === 0">Team has not submitted prediction</span>
+
+                    <span *ngIf="result.length === 0">Team has not submitted prediction...</span>
                 </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer ">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
         </div>
