@@ -19,6 +19,8 @@ export class CardsComponent implements OnInit {
   constructor(private _TeamdetailsService: TeamdetailsService) { }
 
   ngOnInit(): void {
+    console.warn("Wellcome To Developer's PlayGround");
+    
     this.getData();
     this.getTeamdetails()
   }
@@ -55,7 +57,6 @@ export class CardsComponent implements OnInit {
     this.maxPoint = Math.max.apply(Math, this.googleFormTeamDetails.map(function (o) {
       return o.Team_Points;
     }));
-    console.log('max', this.maxPoint);
   }
 
 
@@ -63,7 +64,6 @@ export class CardsComponent implements OnInit {
   getData() {
     this.todaysTeam = [];
     this._TeamdetailsService.getSheetData().then((res: any) => {
-console.log(res);
       let x = [];
       for (var team of res) {
         let y = {
@@ -77,7 +77,6 @@ console.log(res);
         }
         x.push(y)
       }
-      console.log(x);
       this.todaysTeam = x;
     })
 
