@@ -12,16 +12,16 @@
             <label for="exampleInputPassword1">Creator Email</label>
             <div class="btn-toolbar mt-2 ">
                 <div class="input-group">
-                    <input type="text" class="form-control" formControlName="creatorEmail" placeholder="Creator Email"
-                        style="width:27rem">
+                    <input type="text" class="form-control " formControlName="creatorEmail" placeholder="Creator Email"
+                        style="width:27rem" [readonly]="disableCreatorEmail">
                 </div>
-                <input type="text " class="form-control mx-2" style="width:5rem"
-                    [hidden]="!createTeam.controls['creatorEmail'].valid" *ngIf="!isSendOTPVisible">
-                <button type="submit" class="btn btn-success " (click)="sendOTP()" *ngIf="isSendOTPVisible"
-                    [disabled]="!createTeam.controls['creatorEmail'].valid">Send
-                    OTP</button>
-                <button type="submit" class="btn btn-success " (click)="verifyUserEmail()"
-                    *ngIf="!isSendOTPVisible">Verify</button>
+                <input placeholder="OTP" type="text " class="form-control mx-2" style="width:5rem"
+                    [hidden]="!createTeam.controls['creatorEmail'].valid" *ngIf="!isSendOTPVisible"
+                    formControlName="otp" [readonly]="VerifyLabel == 'Verified' ? true : false">
+                <button type="submit" class="btn btn-success mx-2" (click)="sendOTP()" *ngIf="isSendOTPVisible"
+                    [disabled]="!createTeam.controls['creatorEmail'].valid">{{otpLabel}}</button>
+                <button type="submit" class="btn btn-success " (click)="verifyEmail()" *ngIf="!isSendOTPVisible"
+                    [disabled]="VerifyLabel == 'Verified' ? true : false">{{VerifyLabel}}</button>
             </div>
         </div>
 

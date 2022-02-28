@@ -25,7 +25,7 @@
 
  body {
     background-image: linear-gradient(315deg, #c8d4d4 0%, #d1dbdb 74%);
-    height: 100vh;
+ 
     overflow-x: hidden;
 }
 
@@ -47,4 +47,3 @@
 
 }
 body { height: 200%;}
-/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
