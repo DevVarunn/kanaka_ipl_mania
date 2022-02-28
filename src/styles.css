@@ -1,67 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
 
-body {
-    background-color: #041982!important;
-    
+.nav-link{
+    display: initial;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------------------------------------------------------NEW CODE V 0.2---------------------------------------------------------------- */
+
+
+ body {
+    background-image: linear-gradient(315deg, #c8d4d4 0%, #d1dbdb 74%);
+    height: 100vh;
     overflow-x: hidden;
 }
-*{
-    color: white!important;
-}
 
-/* width */
-
-::-webkit-scrollbar {
-    width: 7px;
-}
-
-
-/* Track */
-
- ::-webkit-scrollbar-track {
-    background: #041982;
-}
-
-
-/* Handle */
-
- ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: #1b36bb;
-}
-
-
-/* Handle on hover */
-
- ::-webkit-scrollbar-thumb:hover {
-    background: #1b36bb;
-}
-
-button,
-a {
-    width: 150px;
-    padding: 10px;
-}
-
-li{
-    color: white ;background-color: rgb(245 245 245 / 7%)!important;
-}
-
-.modal-header, .modal-footer, .themeBackground{
-    border-top: none !important;
-    border-bottom: none !important;
-    background-color: #041982!important;
-}
-
-
-
-.list-group-item {
-    font-family: sans-serif;
-    font-weight: 500;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
 
 @media only screen and (max-width: 600px) {
 
@@ -79,3 +46,5 @@ li{
     }
 
 }
+body { height: 200%;}
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
