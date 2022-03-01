@@ -19,7 +19,11 @@ export class SharedService {
   verifyEmail(email: any) {
     return this.http.post(environment.baseUrl + UrlMapping.verifyEmail, email)
   }
-  
+
+  registerUser(body) {
+    return this.http.post(environment.baseUrl + UrlMapping.registerUser, body)
+  }
+
 
   constructor(private http: HttpClient) { }
 }

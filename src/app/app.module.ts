@@ -13,6 +13,7 @@ import { CreateteamComponent } from './createteam/createteam.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { JointeamComponent } from './jointeam/jointeam.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     TeamMatchPipe,
     CreateteamComponent,
     DashboardComponent,
-    NavbarComponent
+    NavbarComponent,
+    JointeamComponent
   ],
   imports: [
     BrowserModule,

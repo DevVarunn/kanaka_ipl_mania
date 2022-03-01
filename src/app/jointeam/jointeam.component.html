@@ -1,0 +1,63 @@
+<div class="container my-5 px-3">
+    Form Status: {{ createUser.status }}
+    <form class="outset p-5" [formGroup]="createUser">
+        <h3><b>Join Team :</b></h3>
+        <div class="form-group mt-2 col-lg-6">
+            <label for="exampleInputEmail1">Team Name</label>
+            <input formControlName="teamId" type="text" class="form-control form-control-sm "
+                [ngClass]=" createUser.controls['teamId'].touched && createUser.controls['teamId'].invalid ? 'is-invalid' : createUser.controls['teamId'].invalid ?'' : 'is-valid' "
+                placeholder="Team Name">
+        </div>
+
+        <div class="form-group mt-2 col-lg-6">
+            <label for="exampleInputEmail1">User Name</label>
+            <input formControlName="username" type="text" class="form-control form-control-sm "
+                [ngClass]=" createUser.controls['username'].touched && createUser.controls['username'].invalid ? 'is-invalid' : createUser.controls['username'].invalid ?'' : 'is-valid' "
+                placeholder="User Name">
+        </div>
+
+        <div class="form-group mt-2 col-lg-6">
+            <label for="exampleInputEmail1">Favorite Team Name</label>
+            <input formControlName="favoriteTeam" type="text" class="form-control form-control-sm"
+                placeholder="Favorite Team"
+                [ngClass]=" createUser.controls['favoriteTeam'].touched && createUser.controls['favoriteTeam'].invalid ? 'is-invalid' : createUser.controls['favoriteTeam'].invalid ?'' : 'is-valid' ">
+        </div>
+
+        <div class="form-group mt-2 col-lg-6">
+            <label for="exampleInputEmail1">Favorite Cricket Player</label>
+            <input formControlName="favoriteCricketPlayer" type="text" class="form-control form-control-sm"
+                placeholder="Favorite Cricket Player"
+                [ngClass]=" createUser.controls['favoriteCricketPlayer'].touched && createUser.controls['favoriteCricketPlayer'].invalid ? 'is-invalid' : createUser.controls['favoriteCricketPlayer'].invalid ?'' : 'is-valid' ">
+        </div>
+
+        <div class="form-group mt-2 ">
+            <label for="exampleInputPassword1">Creator Email</label>
+            <div class="btn-toolbar">
+                <div class="btn-toolbar">
+                    <input type="text" class="form-control form-control-sm" formControlName="email"
+                        placeholder="Creator Email" style="width:22.5rem" [readonly]="disableCreatorEmail"
+                        [ngClass]=" createUser.controls['email'].touched && createUser.controls['email'].invalid ? 'is-invalid' : createUser.controls['email'].invalid ?'' : 'is-valid' ">
+                </div>
+                <input placeholder="OTP" type="text " class="form-control form-control-sm mx-2" style="width:5rem"
+                    [hidden]="!createUser.controls['email'].valid" *ngIf="!isSendOTPVisible" formControlName="otp"
+                    [readonly]="VerifyLabel == 'Verified' ? true : false"
+                    [ngClass]="createUser.controls['otp'].invalid ? 'is-invalid' : createUser.controls['otp'].invalid ?'' : 'is-valid' ">
+                <button type="submit" class="btn btn-sm btn-success mx-2" (click)="sendOTP()" *ngIf="isSendOTPVisible"
+                    [disabled]="!createUser.controls['email'].valid">{{otpLabel}}</button>
+                <button type="submit" class="btn  btn-sm btn-success " (click)="verifyEmail()" *ngIf="!isSendOTPVisible"
+                    [disabled]="VerifyLabel == 'Verified' ? true : false || !createUser.controls['email'].valid">{{VerifyLabel}}</button>
+            </div>
+        </div>
+
+        <div class="form-group mt-2 col-lg-6">
+            <label for="exampleInputPassword1">Team Password</label>
+            <input formControlName="userPassword" type="password" class="form-control form-control-sm"
+                placeholder="Team Password"
+                [ngClass]=" createUser.controls['userPassword'].touched && createUser.controls['userPassword'].invalid ? 'is-invalid' : createUser.controls['userPassword'].invalid ?'' : 'is-valid' ">
+        </div>
+
+        <div class="mt-5">
+            <button class="btn btn-primary btn-sm " (click)="onSubmit()" [disabled]="!createUser.valid">Submit</button>
+        </div>
+    </form>
+</div>
