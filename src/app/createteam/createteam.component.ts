@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { SharedService } from '../Services/shared.service';
 
 @Component({
@@ -16,12 +16,15 @@ export class CreateteamComponent implements OnInit {
 
   private fb: FormBuilder = new FormBuilder()
   createTeam = this.fb.group({
-    name: ['shubham.more26@gmail.com', Validators.required],
-    creatorEmail: ['shubham.more@kanakasoftware.com', Validators.compose([Validators.required, Validators.email])],
-    teamPassword: ['s', Validators.compose([Validators.required, Validators.minLength(6)])],
-    confirmPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+    name: ['Shubham More', Validators.compose([Validators.required, Validators.minLength(10)])],
+    creatorEmail: ['shubham.more@kanakasoftware.com', Validators.compose([Validators.required, Validators.email, Validators.minLength(10)])],
+    teamPassword: ['Shubham', Validators.compose([Validators.required, Validators.minLength(6)])],
+    confirmPassword: ['Shubham', Validators.compose([Validators.required, Validators.minLength(6)])],
     points: ['0', Validators.required],
-    otp: ['', Validators.required]
+    otp: ['', Validators.compose([Validators.required, Validators.maxLength(4), Validators.minLength(4)])],
+    otpStatus: ['', Validators.required],
+    favoriteTeam: ['MI', Validators.required],
+    favoriteCricketPlayer: ['Rohit', Validators.required]
   })
 
   sendOTP() {
@@ -49,8 +52,10 @@ export class CreateteamComponent implements OnInit {
       (data) => {
         if (data['status'] == 200) {
           this.VerifyLabel = 'Verified'
+          this.createTeam.controls['otpStatus'].setValue('verified')
         } else {
           this.disableCreatorEmail = true;
+          this.createTeam.controls['otpStatus'].setValue('')
         }
       }, error => {
         this.VerifyLabel = "Verify"
@@ -59,22 +64,21 @@ export class CreateteamComponent implements OnInit {
   }
 
   createTeamApi() {
-    console.log("called createTeamApi")
 
-    let body = {
-      'name': this.createTeam.controls['name'].value,
-      'creatorEmail': this.createTeam.controls['creatorEmail'].value,
-      'teamPassword': this.createTeam.controls['teamPassword'].value,
-      'confirmPassword': this.createTeam.controls['confirmPassword'].value,
-      'points': this.createTeam.controls['points'].value,
-      'otp': this.createTeam.controls['otp'].value
+    if (this.createTeam.controls['teamPassword'].value == this.createTeam.controls['confirmPassword'].value) {
+      this.SharedService_.createTeam(this.createTeam.value).subscribe(
+        (data) => {
+          if (data['status'] == 200) {
+            this.createTeam.reset()
+          }
+          console.log(data)
+        }, error => { console.log(error) }
+      )
+
+      console.log("called createTeamApi")
+    } else {
+      console.log("password mismatch")
     }
-
-    this.SharedService_.createTeam(body).subscribe(
-      (data) => {
-        console.log(data)
-      }, error => { console.log(error) }
-    )
 
   }
 
