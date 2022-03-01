@@ -16,15 +16,15 @@ export class CreateteamComponent implements OnInit {
 
   private fb: FormBuilder = new FormBuilder()
   createTeam = this.fb.group({
-    name: ['Shubham More', Validators.compose([Validators.required, Validators.minLength(10)])],
-    creatorEmail: ['shubham.more@kanakasoftware.com', Validators.compose([Validators.required, Validators.email, Validators.minLength(10)])],
-    teamPassword: ['Shubham', Validators.compose([Validators.required, Validators.minLength(6)])],
-    confirmPassword: ['Shubham', Validators.compose([Validators.required, Validators.minLength(6)])],
+    name: ['', Validators.compose([Validators.required, Validators.minLength(10)])],
+    creatorEmail: ['', Validators.compose([Validators.required, Validators.email, Validators.minLength(10)])],
+    teamPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+    confirmPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
     points: ['0', Validators.required],
     otp: ['', Validators.compose([Validators.required, Validators.maxLength(4), Validators.minLength(4)])],
     otpStatus: ['', Validators.required],
-    favoriteTeam: ['MI', Validators.required],
-    favoriteCricketPlayer: ['Rohit', Validators.required]
+    favoriteTeam: ['', Validators.required],
+    favoriteCricketPlayer: ['', Validators.required]
   })
 
   sendOTP() {
