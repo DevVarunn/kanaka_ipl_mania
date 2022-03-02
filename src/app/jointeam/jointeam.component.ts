@@ -16,15 +16,14 @@ export class JointeamComponent implements OnInit {
 
   private fb: FormBuilder = new FormBuilder()
   createUser = this.fb.group({
-    teamId: ['2', Validators.compose([Validators.required])],
-    username: ['SHubham MORE', Validators.compose([Validators.required, Validators.minLength(10)])],
-    userPassword: ['SHubham MORE', Validators.compose([Validators.required, Validators.minLength(6)])],
-    favoriteTeam: ['MI', Validators.required],
-    favoriteCricketPlayer: ['RO', Validators.required],
+    teamId: ['', Validators.compose([Validators.required])],
+    username: ['', Validators.compose([Validators.required, Validators.minLength(10)])],
+    userPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+    favoriteTeam: ['', Validators.required],
+    favoriteCricketPlayer: ['', Validators.required],
     otp: ['', Validators.compose([Validators.required, Validators.maxLength(4), Validators.minLength(4), Validators.pattern("^[0-9]*$")])],
     otpStatus: ['', Validators.required],
-    email: ['shubham.more@kanakasoftware.com', Validators.compose([Validators.required, Validators.email, Validators.minLength(10)])],
-
+    email: ['', Validators.compose([Validators.required, Validators.email, Validators.minLength(10)])],
   })
 
 
