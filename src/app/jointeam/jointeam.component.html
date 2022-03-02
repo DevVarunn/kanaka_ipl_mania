@@ -43,9 +43,9 @@
                     [readonly]="VerifyLabel == 'Verified' ? true : false"
                     [ngClass]="createUser.controls['otp'].invalid ? 'is-invalid' : createUser.controls['otp'].invalid ?'' : 'is-valid' ">
                 <button type="submit" class="btn btn-sm btn-success mx-2" (click)="sendOTP()" *ngIf="isSendOTPVisible"
-                    [disabled]="!createUser.controls['email'].valid">{{otpLabel}}</button>
+                    [disabled]="!createUser.controls['email'].valid || otpLabel == 'Sending' ">{{otpLabel}}</button>
                 <button type="submit" class="btn  btn-sm btn-success " (click)="verifyEmail()" *ngIf="!isSendOTPVisible"
-                    [disabled]="VerifyLabel == 'Verified' ? true : false || !createUser.controls['email'].valid">{{VerifyLabel}}</button>
+                    [disabled]="VerifyLabel == 'Verified' ? true : false || !createUser.controls['email'].valid  || !createUser.controls['otp'].valid">{{VerifyLabel}}</button>
             </div>
         </div>
 

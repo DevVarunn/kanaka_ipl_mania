@@ -21,7 +21,7 @@ export class CreateteamComponent implements OnInit {
     teamPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
     confirmPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
     points: ['0', Validators.required],
-    otp: ['', Validators.compose([Validators.required, Validators.maxLength(4), Validators.minLength(4)])],
+    otp: ['', Validators.compose([Validators.required, Validators.maxLength(4), Validators.minLength(4), Validators.pattern("^[0-9]*$")])],
     otpStatus: ['', Validators.required],
     favoriteTeam: ['', Validators.required],
     favoriteCricketPlayer: ['', Validators.required]

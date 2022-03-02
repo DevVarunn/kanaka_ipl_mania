@@ -21,7 +21,7 @@ export class JointeamComponent implements OnInit {
     userPassword: ['SHubham MORE', Validators.compose([Validators.required, Validators.minLength(6)])],
     favoriteTeam: ['MI', Validators.required],
     favoriteCricketPlayer: ['RO', Validators.required],
-    otp: ['', Validators.compose([Validators.required, Validators.maxLength(4), Validators.minLength(4)])],
+    otp: ['', Validators.compose([Validators.required, Validators.maxLength(4), Validators.minLength(4), Validators.pattern("^[0-9]*$")])],
     otpStatus: ['', Validators.required],
     email: ['shubham.more@kanakasoftware.com', Validators.compose([Validators.required, Validators.email, Validators.minLength(10)])],
 

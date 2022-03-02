@@ -38,7 +38,7 @@
                 <button type="submit" class="btn btn-sm btn-success mx-2" (click)="sendOTP()" *ngIf="isSendOTPVisible"
                     [disabled]="!createTeam.controls['creatorEmail'].valid">{{otpLabel}}</button>
                 <button type="submit" class="btn btn-sm btn-success " (click)="verifyEmail()" *ngIf="!isSendOTPVisible"
-                    [disabled]="VerifyLabel == 'Verified' ? true : false || !createTeam.controls['creatorEmail'].valid">{{VerifyLabel}}</button>
+                    [disabled]="VerifyLabel == 'Verified' ? true : false || !createTeam.controls['creatorEmail'].valid || !createTeam.controls['otp'].valid">{{VerifyLabel}}</button>
             </div>
         </div>
 
